@@ -1,0 +1,22 @@
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Eclipse
+.project
+.classpath
+.settings/
+
+# Gradle
+.gradle/
+build/
+
+# Maven
+target/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
