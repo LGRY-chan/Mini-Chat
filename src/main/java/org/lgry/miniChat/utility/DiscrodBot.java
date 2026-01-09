@@ -8,7 +8,15 @@ import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
+import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
+import net.dv8tion.jda.api.hooks.ListenerAdapter;
+import net.dv8tion.jda.api.interactions.commands.OptionType;
+import net.dv8tion.jda.api.interactions.commands.build.Commands;
+import org.jetbrains.annotations.NotNull;
 import org.lgry.miniChat.MiniChat;
+import org.lgry.miniChat.utility.botCommands.AbstractCommand;
+import org.lgry.miniChat.utility.botCommands.StatusCommand;
+import org.lgry.miniChat.utility.botCommands.TestCommand;
 import org.lgry.miniChat.utility.config.Config;
 import org.lgry.miniChat.utility.config.ConfigKey;
 import org.lgry.miniChat.utility.config.ConfigParser;
@@ -60,6 +68,30 @@ public class DiscrodBot {
                                 ConfigKey.DISCORD_ACTIVITY,
                                 String.class,
                                 "그냥 쉬었음"), parser)));
+
+        bot.addEventListener(new ListenerAdapter() {
+            @Override
+            public void onSlashCommandInteraction(@NotNull SlashCommandInteractionEvent event) {
+                switch (event.getName()) {
+                    case "hello" -> {
+                        event.reply("Hello " + event.getOption("name").getAsString() + "!").queue();
+
+                    }
+                }
+            }
+        });
+
+        bot.updateCommands().addCommands(
+                Commands.slash("hello","Hello World!").addOption(OptionType.STRING, "name", "보낼 내용", true)
+        ).queue();
+
+        AbstractCommand.setConfig(config);
+
+        bot.updateCommands().addCommands(
+            new StatusCommand().register(bot),
+            new TestCommand().register(bot)
+        ).queue();
+
 
         this.postDecorated("Hello Velocity!");
         this.sendStartMessage();

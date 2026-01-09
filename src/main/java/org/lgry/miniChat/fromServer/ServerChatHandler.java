@@ -10,6 +10,7 @@ import org.lgry.miniChat.MiniChat;
 import org.lgry.miniChat.utility.DiscrodBot;
 import org.lgry.miniChat.utility.ServerDataUtil;
 import org.lgry.miniChat.utility.config.Config;
+import org.lgry.miniChat.utility.config.ConfigParser;
 import org.slf4j.Logger;
 
 import java.util.HashMap;
@@ -37,12 +38,11 @@ public class ServerChatHandler {
 
         HashMap<String, String> parser = new HashMap<>();
         parser.put("PLAYER", event.getPlayer().getUsername());
-        parser.put("SERVER_1", ServerDataUtil.getParsedName(event.getPlayer().getCurrentServer().get().getServer().getServerInfo().getName(), config));
+        parser.put("SERVER_1", ServerDataUtil.getParsedName(event.getPlayer().getCurrentServer().get().getServer(), config));
 
         Component msg = Component.text(
-                "[AnotherServer] " +
-                "<" + event.getPlayer().getUsername() + "> " +
-                event.getMessage()
+                ConfigParser.parse("[%SERVER_1%] <%PLAYER%>" +
+                        event.getMessage(), parser)
         );
 
         // Send to other server
@@ -59,7 +59,7 @@ public class ServerChatHandler {
         });
 
         // send to discord
-        bot.sendPlayerChat(event.getPlayer().getUsername(), event.getPlayer().getUniqueId(), event.getMessage());
+        bot.sendPlayerChat(ConfigParser.parse("[%SERVER_1%] %PLAYER%", parser) , event.getPlayer().getUniqueId(), event.getMessage());
 
 
     }

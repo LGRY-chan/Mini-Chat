@@ -8,6 +8,22 @@ discord:
 
   message:
 
+    command:
+      bot-denied: "이 채널에서는 명령어를 사용할 수 없습니다!"
+
+      # /status command works better with server-sided MChat.
+      # I'm currently developing it, and before than, just gives little information.
+      # BUT BECAUSE OF MY FUCKING SCHOOL, I THINK THAT IT ENDS AFTER HEAT DEATH OF UNIVERSE :)
+      status:
+        description: "각 서버 혹은 프록시의 상태를 확인합니다."
+        arg1-description: "확인할 서버의 ID를 입력하세요. 비워두면 프록시의 상태를 확인합니다."
+        online: "서버는 현재 온라인"
+        offline: "서버는 현재 오프라인"
+        player-list: "플레이어 목록 (%PLAYER_COUNT%)"
+        player-list-style: "[%PING%] %PLAYER%"
+        player-list-empty: "여긴 조용하네요..."
+
+
     boot:
       title: "프록시가 시작되었어요"
       show-server-count: true
@@ -15,11 +31,14 @@ discord:
       show-start-time: true
       start-time: "시작 시각"
 
+    chat:
+
+
     join:
       simple: false
       title: "%PLAYER% 님이 접속했어요"
       description: "또 만났네요!"
-      description-new: "첫 접속이네요. 반가워요!"
+      description-new: "첫 접속이네요. 반가워요!"     # first -> new, last join > 2weeks -> old, else -> normal
       description-old: "돌아온 것을 환영해요!"
       show-joined-server: true
       joined-server: "참가한 서버"
@@ -30,7 +49,7 @@ discord:
       simple: false
       title: "%PLAYER% 님이 종료했어요"
       description: "또 만나길 바랄게요."
-      description-hard: "게임도 좋지만 조금 쉬는 게 어떨까요..."
+      description-hard: "게임도 좋지만 조금 쉬는 게 어떨까요..."     # playtime > 6 hours -> hard
       show-play-time: true
       play-time: "플레이한 시간"
 

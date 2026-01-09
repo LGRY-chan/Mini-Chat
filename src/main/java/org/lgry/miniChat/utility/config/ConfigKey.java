@@ -9,7 +9,16 @@ public enum ConfigKey {
     DISCORD_TOKEN("discord.token", String.class),
     DISCORD_WEBHOOK_URL("discord.webhook-url", String.class),
     DISCORD_CHAT_REDIRECTION_CHANNEL("discord.chat-redirection-channel", String.class),
+    DISCORD_BOT_USABLE_CHANNEL("discord.bot-usable-channel", String.class),
     DISCORD_ACTIVITY("discord.activity", String.class),
+
+    // DISCORD MESSAGE > COMMAND
+    DISCORD_MESSAGE_COMMAND_BOT_DENIED("discord.message.command.bot-denied", String.class),
+
+    DISCORD_MESSAGE_COMMAND_STATUS_DESCRIPTION("discord.message.command.status.description", String.class),
+    DISCORD_MESSAGE_COMMAND_STATUS_ARG1_DESCRIPTION("discord.message.command.status.arg1-description", String.class),
+    DISCORD_MESSAGE_COMMAND_STATUS_PLAYER_LIST("discord.message.command.status.player-list", String.class),
+    DISCORD_MESSAGE_COMMAND_STATUS_PLAYER_LIST_STYLE("discord.message.command.status.player-list-style", String.class),
 
     // DISCORD MESSAGE > BOOT
     DISCORD_MESSAGE_BOOT_TITLE("discord.message.boot.title", String.class),
