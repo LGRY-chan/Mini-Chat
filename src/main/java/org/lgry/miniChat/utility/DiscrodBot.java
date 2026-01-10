@@ -37,6 +37,7 @@ import java.util.UUID;
 
 public class DiscrodBot {
 
+    private final MiniChat me;
     private final ProxyServer proxy;
     private final Logger logger;
     private final Config config;
@@ -47,6 +48,7 @@ public class DiscrodBot {
 
     public DiscrodBot(MiniChat me) {
 
+        this.me = me;
         this.proxy = me.getProxy();
         this.logger = me.getLogger();
         this.config = me.getConfig();
@@ -69,34 +71,16 @@ public class DiscrodBot {
                                 String.class,
                                 "그냥 쉬었음"), parser)));
 
-        bot.addEventListener(new ListenerAdapter() {
-            @Override
-            public void onSlashCommandInteraction(@NotNull SlashCommandInteractionEvent event) {
-                switch (event.getName()) {
-                    case "hello" -> {
-                        event.reply("Hello " + event.getOption("name").getAsString() + "!").queue();
-
-                    }
-                }
-            }
-        });
-
-        bot.updateCommands().addCommands(
-                Commands.slash("hello","Hello World!").addOption(OptionType.STRING, "name", "보낼 내용", true)
-        ).queue();
-
         AbstractCommand.setConfig(config);
 
         bot.updateCommands().addCommands(
-            new StatusCommand().register(bot),
+            new StatusCommand(this.me).register(bot),
             new TestCommand().register(bot)
         ).queue();
 
 
         this.postDecorated("Hello Velocity!");
         this.sendStartMessage();
-
-        //postChannel.sendMessageEmbeds(embed.build()).queue();
 
     }
 
@@ -115,7 +99,7 @@ public class DiscrodBot {
                 .setDescription("-# " + config.getOrDefault(
                         ConfigKey.OTHERS_SERVER_ADDRESS,
                         String.class,
-                        "No address found"
+                        "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
                 ));
 
         if (showServerCount) embed.addField( config.getOrDefault(ConfigKey.DISCORD_MESSAGE_BOOT_SERVER_COUNT, String.class, "Server count"), "-# " + proxy.getAllServers().size(), true);

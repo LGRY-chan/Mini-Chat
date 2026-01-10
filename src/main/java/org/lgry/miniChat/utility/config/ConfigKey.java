@@ -17,6 +17,9 @@ public enum ConfigKey {
 
     DISCORD_MESSAGE_COMMAND_STATUS_DESCRIPTION("discord.message.command.status.description", String.class),
     DISCORD_MESSAGE_COMMAND_STATUS_ARG1_DESCRIPTION("discord.message.command.status.arg1-description", String.class),
+    DISCORD_MESSAGE_COMMAND_STATUS_NOSUCHSERVER_EXCEPTION("discord.message.command.status.nosuchserver-exception", String.class),
+    DISCORD_MESSAGE_COMMAND_STATUS_ONLINE("discord.message.command.status.online", String.class),
+    DISCORD_MESSAGE_COMMAND_STATUS_OFFLINE("discord.message.command.status.offline", String.class),
     DISCORD_MESSAGE_COMMAND_STATUS_PLAYER_LIST("discord.message.command.status.player-list", String.class),
     DISCORD_MESSAGE_COMMAND_STATUS_PLAYER_LIST_STYLE("discord.message.command.status.player-list-style", String.class),
 

@@ -59,6 +59,8 @@ public class ServerChatHandler {
         });
 
         // send to discord
+
+        if (bot == null) return;
         bot.sendPlayerChat(ConfigParser.parse("[%SERVER_1%] %PLAYER%", parser) , event.getPlayer().getUniqueId(), event.getMessage());
 
 

@@ -45,14 +45,14 @@ public class JoinNLeaveHandler {
 
             if (ServerDataUtil.isIgnoredServer(event.getPlayer().getCurrentServer().get().getServer(), config)) return;
 
-            bot.sendPlayerJoinMessage(event);
+            if (bot != null) bot.sendPlayerJoinMessage(event);
             dataManager.markAsJustJoined(event.getPlayer().getUniqueId());
 
         } else {
 
             // Move
 
-            bot.sendPlayerMoveMessage(event);
+            if (bot != null) bot.sendPlayerMoveMessage(event);
 
             // nahhhhh I am so tired and this is fucking grinding
             // copy, paste, copy, paste,.....
@@ -68,7 +68,7 @@ public class JoinNLeaveHandler {
     public void OnLeave(DisconnectEvent event) {
 
         logger.info("Someone left");
-        bot.sendPlayerLeaveMessage(event);
+        if (bot != null) bot.sendPlayerLeaveMessage(event);
         dataManager.markAsJustJoined(event.getPlayer().getUniqueId());
 
     }

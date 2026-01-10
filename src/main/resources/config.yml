@@ -17,8 +17,9 @@ discord:
       status:
         description: "각 서버 혹은 프록시의 상태를 확인합니다."
         arg1-description: "확인할 서버의 ID를 입력하세요. 비워두면 프록시의 상태를 확인합니다."
-        online: "서버는 현재 온라인"
-        offline: "서버는 현재 오프라인"
+        nosuchserver-exception: "해당하는 서버는 존재하지 않습니다."
+        online: "%SERVER_1% - 서버는 현재 온라인"
+        offline: "%SERVER_1% - 서버는 현재 오프라인"
         player-list: "플레이어 목록 (%PLAYER_COUNT%)"
         player-list-style: "[%PING%] %PLAYER%"
         player-list-empty: "여긴 조용하네요..."
